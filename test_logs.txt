@@ -14,3 +14,21 @@ URL with trailing question mark: /api/config?
 URL with multiple ampersands: /api/search?type=product&query=widget&sort=price&filter=available
 URL with empty value: /api/check?param=&another=value
 URL with query param at end of line: /api/fetch?id=100
+
+# HTTP Method Tests
+This is a GET request.
+Another line with POST here.
+Request with PUT method.
+And one for DELETE operation.
+Let's PATCH this.
+Sending a HEAD request.
+Check OPTIONS for this resource.
+
+# Negative tests for HTTP Methods
+This is a get request.
+This is aPOSTrequest.
+This is a PUTT request.
+This is a RequestMethodNotHandled request.
+This is a GETT request.
+No space beforeGET.
+No space afterPOST .

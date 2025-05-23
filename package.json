@@ -1,6 +1,6 @@
 {
   "name": "@s-a/digital-colors",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "colorize stdin",
   "main": "lib/index.js",
   "scripts": {

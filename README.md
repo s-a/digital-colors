@@ -2,6 +2,9 @@
 
 `dc` is a command-line utility that enhances terminal output by adding colorization. It's designed to highlight common data formats like XML and JSON, as well as patterns such as log levels and timestamps.
 
+### SQL Highlighting
+The tool now includes basic syntax highlighting for TSQL and MS SQL Server commands. It will colorize keywords, stored procedure names (especially for `EXEC` statements), parameters (unless they are XML or JSON strings), and comments (`--` and `/* ... */`) within your log output. This helps in quickly identifying and analyzing SQL statements embedded in logs.
+
 You can use `dc` in two main ways:
 1.  **As a command wrapper:** `dc your_command [args...]`
     *   `dc` executes `your_command` and colorizes its standard output.

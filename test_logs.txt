@@ -1,0 +1,16 @@
+2025-05-23 11:39:12,614 DEBUG GET /api/voucher/v1/accounts/12010000000000?pin=123456 node-fetch/1.0
+2025-05-23 11:40:13,715 INFO Request to /api/users/all?active=true&page=2 completed.
+2025-05-23 11:41:14,816 ERROR <error><message>Failed to fetch /api/data/items?id=item001&attempt=2</message></error>
+2025-05-23 11:42:15,917 DEBUG Processing JSON: {"key": "value", "url": "/api/status?check=true&source=internal"}
+A normal line without any special items.
+2025-05-23 11:43:16,018 FATAL System crash at /api/endpoint/critical
+DEBUG Just a debug message.
+INFO Some informational text.
+ERROR An error occurred.
+Some XML data: <data><item id="1">value</item></data>
+Some JSON data: {"name": "test", "version": "1.0"}
+URL with no query params: /api/info/health
+URL with trailing question mark: /api/config?
+URL with multiple ampersands: /api/search?type=product&query=widget&sort=price&filter=available
+URL with empty value: /api/check?param=&another=value
+URL with query param at end of line: /api/fetch?id=100

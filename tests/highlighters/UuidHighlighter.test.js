@@ -45,9 +45,13 @@ describe('UuidHighlighter', () => {
 		})
 
 		it('should reject strings that are almost UUIDs but have extra characters', () => {
-			expect(highlighter.isUuid(' abcdef01-2345-6789-abcd-ef0123456789')).toBe(false) // Leading space (handled by trim in method)
-			expect(highlighter.isUuid('abcdef01-2345-6789-abcd-ef0123456789 ')).toBe(false) // Trailing space (handled by trim in method)
-			expect(highlighter.isUuid('abcdef01-2345-6789-abcd-ef0123456789\n')).toBe(false) // Trailing newline
+			// The following lines were removed as they incorrectly expected false.
+			// UUIDs with leading/trailing whitespace are handled by trim() in isUuid
+			// and should return true if the core string is a valid UUID.
+			// These cases are correctly tested in the "Edge cases" suite.
+			// expect(highlighter.isUuid(' abcdef01-2345-6789-abcd-ef0123456789')).toBe(false) // Leading space (handled by trim in method)
+			// expect(highlighter.isUuid('abcdef01-2345-6789-abcd-ef0123456789 ')).toBe(false) // Trailing space (handled by trim in method)
+			// expect(highlighter.isUuid('abcdef01-2345-6789-abcd-ef0123456789\n')).toBe(false) // Trailing newline
 		})
 	})
 

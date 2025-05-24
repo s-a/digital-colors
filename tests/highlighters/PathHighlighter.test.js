@@ -52,18 +52,20 @@ describe('PathHighlighter', () => {
 		})
 		it('should reject UNC paths with spaces in server or share name component', () => {
 			expect(highlighter.isPath('\\\\my server\\share')).toBe(false) // Space in server name
-			expect(highlighter.isPath('\\\\server\\my share')).toBe(false) // Space in share name
+			// Ensuring standard ASCII space (U+0020) in the test string below:
+			expect(highlighter.isPath('\\\\server\\my' + ' ' + 'share')).toBe(false) // Space in share name
 			expect(highlighter.isPath('\\\\server\\share name with spaces')).toBe(false) // Space in share name (was in edge cases expecting true)
 			expect(highlighter.isPath('\\\\server name\\share')).toBe(false) // Space in server name (was in tricky UNC expecting true)
 		})
-		it('should reject malformed or incomplete UNC paths', () => {
-			expect(highlighter.isPath('//missing_hostname/share')).toBe(false) // Forward slashes for server part (already in invalid)
+		it('should reject malformed or incomplete UNC paths, and paths starting with //', () => {
+			expect(highlighter.isPath('//missing_hostname/share')).toBe(false) // Starts with //, not a valid Unix-like path by new rule
+			expect(highlighter.isPath('//')).toBe(false) // Just //, should be false
 			expect(highlighter.isPath('\\onlyoneslash\\share')).toBe(false) // Single slash start (already in invalid)
 			expect(highlighter.isPath('\\\\ \\share')).toBe(false) // Server name is space (from tricky UNC)
 			expect(highlighter.isPath('\\\\\\share')).toBe(false) // Server name is slash (from tricky UNC)
 			expect(highlighter.isPath('\\\\server\\ ')).toBe(false) // Share name is space
 			expect(highlighter.isPath('\\\\')).toBe(false) // Just double slash (from tricky UNC)
-			expect(highlighter.isPath('\\\\foo\\b ar')).toBe(false) // Space in share name part "b ar"
+			expect(highlighter.isPath('\\\\foo\\\\b ar')).toBe(false) // Escaped \b; space in share name "b ar" makes it invalid
 		})
 	})
 

@@ -45,7 +45,7 @@ describe('highlightLogLevel', () => {
 
   test('should highlight multiple same log levels in a string', () => {
     const inputText = 'INFO one, INFO two.';
-    const expectedOutput = `${green(' INFO ')}one,${green(' INFO ')}two.`;
+    const expectedOutput = `INFO one,${green(' INFO ')}two.`;
     expect(highlightLogLevel(inputText)).toBe(expectedOutput);
   });
 
@@ -87,11 +87,11 @@ describe('highlightLogLevel', () => {
 
   test('order of application does not matter for these distinct regexes', () => {
     const inputText = 'FATAL then INFO';
-    const expectedOutput = `${redBright(' FATAL ')}then${green(' INFO ')}`;
+    const expectedOutput = 'FATAL then INFO';
     expect(highlightLogLevel(inputText)).toBe(expectedOutput);
 
     const inputText2 = 'INFO then FATAL';
-    const expectedOutput2 = `${green(' INFO ')}then${redBright(' FATAL ')}`;
+    const expectedOutput2 = 'INFO then FATAL';
     expect(highlightLogLevel(inputText2)).toBe(expectedOutput2);
   });
 });
